@@ -14,6 +14,9 @@ class Solution(object):
 		uniqueSub = []
 		uniqueStr = ""
 		
+		if len(s) <= 1:
+			return len(s)
+		
 		for i in range(len(s)-1):
 			uniqueStr = ""
 			
@@ -21,14 +24,16 @@ class Solution(object):
 				if j not in uniqueStr:
 					uniqueStr+=j
 				else:
-					uniqueSub.append(uniqueStr)
 					break
-					
+			uniqueSub.append(uniqueStr)
+			
+		uniqueStr = ""
+		
 		for i in uniqueSub:
-			if i > uniqueStr:
+			if len(i) > len(uniqueStr):
 				uniqueStr = i
 				
-		return uniqueStr
+		return len(uniqueStr)
 		
 if __name__ == '__main__':
 	print(Solution().lengthOfLongestSubstring("pwwkew"))
