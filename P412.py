@@ -5,17 +5,12 @@ class Solution(object):
 		:rtype: List[str]
 		"""
 		ar = []
-        for i in range(1,n+1):
-            ar.append("")
-            if not i % 3:
-                ar[i-1] += "Fizz"
-                if not i % 5:
-                    ar[i-1] += "Buzz"
-            elif not i % 5:
-                    ar[i-1] += "Buzz"
-            else:
-                ar[i-1] = str(i)
-        return ar
-		
+		for i in range(1,n+1):
+			if i%3 and i%5:
+				ar.append(i)
+			else:
+				ar.append("Fizz"*bool(i%3)+"Buzz"*bool(i%5))
+		return ar
+			
 if __name__ == '__main__':
 	print(Solution().fizzBuzz(3))
